@@ -296,3 +296,64 @@ footer{
     padding: 6px 0;
   }
 }
+/* ===== MENÚ PRINCIPAL ===== */
+.menu {
+  display: flex;
+  gap: 48px; /* Espaciado generoso en desktop */
+  align-items: center;
+  flex-wrap: wrap; /* Permite que baje de línea si no cabe */
+  font-family: var(--font-serif); /* Tu tipografía premium */
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--gold-1);
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+/* Subrayado elegante al pasar el mouse */
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  background-color: var(--gold-2);
+  transition: width 0.3s ease;
+}
+
+.menu a:hover {
+  color: var(--gold-2);
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .menu {
+    gap: 28px;
+    font-size: 0.95rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu {
+    flex-direction: column; /* Apila enlaces */
+    gap: 16px;
+    font-size: 0.9rem;
+    padding: 12px 0;
+    background: rgba(12, 12, 12, 0.85);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border-radius: 8px;
+  }
+}
