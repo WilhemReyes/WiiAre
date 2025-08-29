@@ -1,0 +1,268 @@
+/* ==============================
+   1. VARIABLES GLOBALES & TIPOS
+   ============================== */
+:root{
+  --gold-1: #C0A36E;
+  --gold-2: #E6D3A3;
+  --ink: #0C0C0C;
+  --paper: #F5F0E6;
+
+  --font-script: "Italianno", serif;
+  --font-serif: "Cormorant Garamond", Garamond, serif;
+  --font-sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+  --maxw: 1200px;
+  --gutter: clamp(16px, 3vw, 32px);
+  --radius: 12px;
+  --shadow-gold: 0 10px 30px rgba(192,163,110,0.25);
+
+  --t-fast: .25s;
+  --t-base: .6s;
+  --t-slow: .85s;
+  --easing: cubic-bezier(.22, .61, .36, 1);
+}
+
+/* ==============================
+   2. BASE
+   ============================== */
+*,*::before,*::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin: 0; color: var(--paper); background: var(--ink);
+  font-family: var(--font-sans); line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img,video{ max-width: 100%; height: auto; display: block; }
+a{ color: inherit; text-decoration: none; }
+.wrap{ max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+
+/* ==============================
+   3. SPLASH
+   ============================== */
+.splash{
+  position: fixed; inset: 0; background: var(--ink);
+  display: grid; place-items: center;
+  z-index: 999; transition: opacity var(--t-slow), visibility var(--t-slow);
+}
+.splash__mark{
+  font-family: var(--font-script);
+  font-size: clamp(48px, 10vw, 120px);
+  color: var(--gold-1);
+  opacity: 0; transform: translateY(12px);
+  animation: markIn 1.2s var(--easing) forwards;
+}
+@keyframes markIn{ to{ opacity:1; transform: translateY(0); } }
+body.is-loaded .splash{ opacity: 0; visibility: hidden; }
+
+/* ==============================
+   4. HEADER
+   ============================== */
+header{
+  position: fixed; top: 0; left: 0; right: 0;
+  /* Compatibilidad Safari/iOS */
+  -webkit-backdrop-filter: saturate(120%) blur(8px);
+  backdrop-filter: saturate(120%) blur(8px);
+  
+  background: rgba(12,12,12,0.65);
+  border-bottom: 1px solid rgba(192,163,110,0.16);
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform var(--t-slow) .4s, opacity var(--t-slow) .4s;
+}
+body.is-loaded header{ transform: translateY(0); opacity: 1; }
+.nav{ display:flex; align-items:center; justify-content:space-between; height: 64px; }
+.logo{
+  font-family: var(--font-script);
+  font-size: clamp(24px, 3.2vw, 36px); color: var(--gold-1);
+}
+.menu{ display:flex; gap: clamp(12px, 2.4vw, 28px); }
+.menu a{ opacity: .85; transition: opacity var(--t-fast); }
+.menu a:hover{ opacity: 1; }
+
+/* ==============================
+   5. HERO
+   ============================== */
+.hero{
+  position: relative; min-height: 100svh;
+  display:grid; place-items:center; overflow:hidden;
+}
+.hero__media{
+  position: absolute; inset: 0; object-fit: cover;
+  transform: scale(1.06); transition: transform 10s linear;
+}
+body.is-loaded .hero__media{ transform: scale(1); }
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(to top, rgba(12,12,12,0.85), rgba(12,12,12,0.25));
+}
+.hero__inner{ text-align:center; padding: calc(64px + 8vh) var(--gutter) 10vh; }
+.brand-script{
+  font-family: var(--font-script);
+  font-size: clamp(48px, 9vw, 140px);
+  color: var(--gold-1);
+  animation: float 6s ease-in-out infinite alternate;
+}
+@keyframes float{ to{ transform: translateY(-6px); } }
+.hero__kicker{ font-family: var(--font-serif); font-size: clamp(18px, 2.4vw, 28px); }
+.cta-row{ margin-top: 20px; display:flex; gap: 14px; justify-content:center; flex-wrap:wrap; }
+
+/* ==============================
+   6. BOTONES
+   ============================== */
+.btn{
+  position:relative; padding: 12px 18px; border-radius: 999px;
+  border: 1px solid rgba(192,163,110,0.35);
+  background: linear-gradient(120deg, rgba(192,163,110,0.22), rgba(230,211,163,0.15));
+  color: #F7F4EC; cursor:pointer; overflow:hidden;
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+.btn::before{
+  content:""; position:absolute; inset:-2px;
+  background: linear-gradient(90deg, transparent, rgba(230,211,163,0.85), transparent);
+  transform: translateX(-120%); transition: transform .75s var(--easing);
+}
+.btn:hover{ transform: translateY(-2px); box-shadow: var(--shadow-gold); }
+.btn:hover::before{ transform: translateX(120%); }
+.btn--ghost{ background: transparent; border-color: rgba(255,255,255,0.2); }
+
+/* ==============================
+   7. SECCIONES Y DIVISORES
+   ============================== */
+section{ padding: clamp(56px, 8vw, 110px) 0; }
+.divider{
+  height:1px; background: linear-gradient(90deg, transparent, rgba(192,163,110,0.35), transparent);
+}
+.section-title{ font-family: var(--font-serif); font-size: clamp(28px, 4.4vw, 48px); }
+.section-lead{ color: #DAD4C8; max-width: 70ch; }
+
+/* ==============================
+   8. SCROLL REVEAL
+   ============================== */
+.reveal{ opacity: 0; transform: translateY(18px); transition: opacity var(--t-base), transform var(--t-base); }
+.reveal.visible{ opacity: 1; transform: translateY(0); }
+
+/* ==============================
+   9. ARTISTAS
+   ============================== */
+.artists-grid{
+  display: grid; gap: clamp(16px, 2.6vw, 28px);
+  grid-template-columns: repeat(3, 1fr);
+}
+.artist-card{
+  position: relative; border-radius: var(--radius); overflow: hidden;
+  border: 1px solid rgba(192,163,110,0.18);
+  transition: transform var(--t-base), box-shadow var(--t-base);
+}
+.artist-card:hover{
+  transform: translateY(-6px); box-shadow: var(--shadow-gold);
+  border-color: rgba(192,163,110,0.35);
+}
+.artist-card img{
+  width:100%; aspect-ratio: 4/5; object-fit: cover;
+  filter: grayscale(100%) contrast(95%);
+  transition: filter var(--t-base), transform var(--t-base);
+}
+.artist-card:hover img{
+  filter: grayscale(0%) contrast(102%); transform: scale(1.06);
+}
+.artist-info{ position: absolute; left: 16px; bottom: 16px; }
+.artist-name{
+  font-family: var(--font-serif);
+  position: relative; display: inline-block;
+}
+.artist-name::after{
+  content:""; position:absolute; left:0; bottom:-6px; height:2px; width:100%;
+  background: linear-gradient(90deg, var(--gold-1), var(--gold-2));
+  transform: scaleX(0); transform-origin: left; transition: transform .35s var(--easing);
+}
+.artist-card:hover .artist-name::after{ transform: scaleX(1); }
+
+/* ==============================
+   10. MANIFIESTO
+   ============================== */
+.manifesto{
+  display: grid;
+  gap: clamp(18px, 3vw, 30px);
+  grid-template-columns: 1.1fr .9fr;
+  align-items: start;
+}
+.manifesto p{
+  margin: 0;
+  color: #E9E4D8;
+}
+.manifesto .quote{
+  font-family: var(--font-script);
+  font-size: clamp(28px, 4.2vw, 54px);
+  color: var(--gold-1);
+  line-height: 1;
+  letter-spacing: .2px;
+}
+@media (max-width: 900px){
+  .manifesto{ grid-template-columns: 1fr; }
+}
+
+/* ==============================
+   11. FOOTER
+   ============================== */
+footer{
+  padding: 40px 0;
+  color: #CFC8BB;
+  border-top: 1px solid rgba(192,163,110,0.18);
+}
+.foot{
+  display:flex; gap: 16px;
+  align-items:center; justify-content:space-between; flex-wrap:wrap;
+}
+.social{ display:flex; gap: 14px; }
+.social a{
+  opacity: .8;
+  transition: opacity var(--t-fast);
+}
+.social a:hover{
+  opacity: 1;
+  color: var(--gold-1);
+}
+
+/* ==============================
+   12. RESPONSIVE
+   ============================== */
+@media (max-width: 1024px){
+  .artists-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px){
+  .artists-grid{ grid-template-columns: 1fr; }
+}
+@media (max-width: 720px){
+  .nav{ height: 56px; }
+  .hero__inner{ padding-top: calc(56px + 6vh); }
+  .menu{ gap: 16px; }
+}
+@media (max-width: 420px){
+  .btn{ width: 100%; justify-content: center; }
+  .hero__kicker{ font-size: 18px; }
+  .brand-script{ font-size: clamp(44px, 14vw, 96px); }
+}
+
+/* ==============================
+   13. ACCESIBILIDAD
+   ============================== */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+  html{ scroll-behavior: auto; }
+  .hero__media{ transform: none !important; }
+}
+
+/* ==============================
+   14. SAFE AREA iOS
+   ============================== */
+.safe-bottom{
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+}
+/* Ejemplo de clases que reemplazan inline styles */
+.delay-06 { transition-delay: .06s; }
+.delay-10 { transition-delay: .10s; }
+.delay-12 { transition-delay: .12s; }
+
+/* Resto del CSS: variables, reset, splash, header, hero, secciones... */
+/* Usa el `styles.css` completo que ya te pasé en mensajes anteriores,
+   pero añadiendo estas clases .delay-XX y quitando los style="" del HTML */

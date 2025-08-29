@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wii aRe Records — Sello</title>
+  <meta name="description" content="Wii aRe Records: sello boutique con mirada global. Descubre artistas, manifiesto y visión." />
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Splash -->
+  <div class="splash" aria-hidden="true">
+    <div class="splash__mark">Wii aRe</div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <div class="logo">Wii aRe...The best.</div>
+      <nav class="menu" aria-label="Principal">
+        <a href="#artistas">Artistas</a>
+        <a href="#manifiesto">Manifiesto</a>
+        <a href="#contacto" class="btn btn--ghost">Contactar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" aria-label="Intro">
+    <video class="hero__media"
+           autoplay
+           muted
+           loop
+           playsinline
+           webkit-playsinline
+           poster="Header Mic.jpg">
+      <source src="Intro.mp4" type="video/mp4" />
+    </video>
+
+    <div class="hero__inner wrap">
+      <h1 class="brand-script">Wii aRe Records</h1>
+      <p class="hero__kicker reveal">Boutique label. Herencia y vanguardia, desde La Habana al mundo.</p>
+      <div class="cta-row reveal delay-12">
+        <a href="#artistas" class="btn">Descubrir artistas</a>
+        <a href="#manifiesto" class="btn btn--ghost">Leer manifiesto</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Artistas -->
+  <section id="artistas" class="wrap" aria-label="Artistas">
+    <h2 class="section-title reveal">Artistas</h2>
+    <p class="section-lead reveal delay-06">Talento curado con criterio: obras que suenan impecables y se sienten verdaderas.</p>
+
+    <div class="artists-grid">
+      <article class="artist-card reveal">
+        <img src="Maviola WEB.jpg" alt="Retrato del artista 1" loading="lazy">
+        <div class="artist-info">
+          <h3 class="artist-name">Jeila Maviola</h3>
+        </div>
+      </article>
+      <article class="artist-card reveal delay-06">
+        <img src="artist-2.jpg" alt="Retrato del artista 2" loading="lazy">
+        <div class="artist-info">
+          <h3 class="artist-name">Artista Dos</h3>
+        </div>
+      </article>
+      <article class="artist-card reveal delay-12">
+        <img src="artist-3.jpg" alt="Retrato del artista 3" loading="lazy">
+        <div class="artist-info">
+          <h3 class="artist-name">Artista Tres</h3>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Manifiesto -->
+  <section id="manifiesto" class="wrap" aria-label="Manifiesto">
+    <h2 class="section-title reveal">Manifiesto</h2>
+    <div class="manifesto">
+      <div class="reveal">
+        <p>Creemos en la excelencia audible y emocional. La mezcla importa, la intención importa, el silencio también.</p>
+        <p>Honramos la historia, pero cortamos nuestra propia silueta en el presente. Sin prisa, con precisión.</p>
+      </div>
+      <div class="reveal delay-10">
+        <div class="quote">Elegancia que se escucha.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Demos -->
+<!-- Demos -->
+<section id="demos" class="wrap safe-bottom" aria-label="Envío de demos">
+  <h2 class="section-title reveal">Envío de demos</h2>
+  <div class="specs reveal delay-06">
+    <ul class="spec-list">
+      <li>🎵 Formato: <strong>MP3</strong> (mix, master o demo)</li>
+      <li>📦 Peso máximo: <strong>20 MB</strong></li>
+      <li>🎧 Debe escucharse bien y representar tu sonido real</li>
+      <li>🖋 Incluir <strong>nombre del artista</strong></li>
+      <li>📝 Breve descripción sobre ti y por qué eliges Wii aRe Records</li>
+    </ul>
+  </div>
+  <div class="cta-row reveal delay-12">
+    <a href="mailto:wiiarerecords@gmail.com"
+       class="btn">
+      Enviar demo
+    </a>
+  </div>
+</section>
+
+
+  <div class="divider"></div>
+
+  <!-- Contacto -->
+  <section id="contacto" class="wrap safe-bottom" aria-label="Contacto">
+    <h2 class="section-title reveal">Colabora con nosotros</h2>
+    <p class="section-lead reveal delay-06">Si tu música cuenta una verdad, queremos escucharla. Producción, distribución y marca con criterio.</p>
+    <div class="cta-row reveal delay-12">
+      <a href="#demos" class="btn">Enviar demo</a>
+      <a href="#" class="btn btn--ghost">Guía de artistas</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div>© <span id="year"></span> Wii aRe Records</div>
+      <div class="social" aria-label="Redes">
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+        <a href="#">Spotify</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
