@@ -266,3 +266,39 @@ footer{
 /* Resto del CSS: variables, reset, splash, header, hero, secciones... */
 /* Usa el `styles.css` completo que ya te pasé en mensajes anteriores,
    pero añadiendo estas clases .delay-XX y quitando los style="" del HTML */
+/* Menú responsive */
+@media (max-width: 720px) {
+  .menu {
+    display: none; /* oculto por defecto en móvil */
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(12,12,12,0.95);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    position: absolute;
+    top: 64px; /* altura del header */
+    right: 0;
+    left: 0;
+    padding: 20px;
+  }
+
+  .menu.open {
+    display: flex; /* se muestra cuando se activa */
+  }
+
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--gold-1);
+    background: none;
+    border: none;
+  }
+}
+
+/* En escritorio, el toggle no se ve */
+@media (min-width: 721px) {
+  .menu-toggle {
+    display: none;
+  }
+}
